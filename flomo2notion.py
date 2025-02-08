@@ -20,7 +20,6 @@ class Flomo2Notion:
         self.uploader = Md2NotionUploader()
 
     def insert_memo(self, memo):
-        print("insert_memo:", memo)
         content_md = markdownify(memo['content'])
         parent = {"database_id": self.notion_helper.page_id, "type": "database_id"}
         content_text = html2text.html2text(memo['content'])
@@ -56,8 +55,6 @@ class Flomo2Notion:
         self.uploader.uploadSingleFileContent(self.notion_helper.client, content_md, page['id'])
 
     def update_memo(self, memo, page_id):
-        print("update_memo:", memo)
-
         content_md = markdownify(memo['content'])
         # 只更新内容
         content_text = html2text.html2text(memo['content'])
